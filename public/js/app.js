@@ -1929,17 +1929,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // require
+
+
+moment().format();
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['quizid', 'quizQuestions', 'hasQuizPlayed', 'times'],
   data: function data() {
     return {
       questions: this.quizQuestions,
       questionIndex: 0,
-      userresponses: Array(this.quizQuestions.length).fill(false),
+      userResponses: Array(this.quizQuestions.length).fill(false),
       currentQuestion: 0,
       currentAnswer: 0,
-      //clock:moment(this.times*60 *1000)
-      clock: this.times
+      clock: moment(this.times)
     };
   },
   mounted: function mounted() {
@@ -1950,11 +1968,11 @@ __webpack_require__.r(__webpack_exports__);
     }, 1000);
   },
   computed: {
-    time: function time() {
+    times: function times() {
       var minsec = this.clock.format('mm:ss');
 
       if (minsec == '00:00') {
-        alert("Timeout");
+        alert('timeout');
         window.location.reload();
       }
 
@@ -1972,7 +1990,7 @@ __webpack_require__.r(__webpack_exports__);
       this.currentAnswer = answer, this.currentQuestion = question;
     },
     score: function score() {
-      return this.userresponses.filter(function (val) {
+      return this.userResponses.filter(function (val) {
         return val === true;
       }).length;
     },
@@ -2005,10 +2023,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // require
-
-
-moment().format();
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 /**
  * The following block of code may be used to automatically register your
@@ -59108,7 +59122,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Online Examination\n                "),
+            _vm._v("Online ExaminAtion\n                    "),
             _c("span", { staticClass: "float-right" }, [
               _vm._v(
                 _vm._s(_vm.questionIndex) + "/" + _vm._s(_vm.questions.length)
@@ -59120,12 +59134,14 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             [
-              _c("span", { staticStyle: { float: "right", color: "red" } }, [
-                _vm._v(_vm._s(_vm.clock))
-              ]),
+              _c(
+                "span",
+                { staticClass: "float-right", staticStyle: { color: "red" } },
+                [_vm._v(_vm._s(_vm.times))]
+              ),
               _vm._v(" "),
               _vm._l(_vm.questions, function(question, index) {
-                return _c("div", { staticStyle: { "margin-left": "10px" } }, [
+                return _c("div", [
                   _c(
                     "div",
                     {
@@ -59133,16 +59149,16 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: index == _vm.questionIndex,
-                          expression: "index==questionIndex"
+                          value: index === _vm.questionIndex,
+                          expression: "index===questionIndex"
                         }
                       ]
                     },
                     [
                       _vm._v(
-                        "\n                " +
-                          _vm._s(question.name) +
-                          "\n                "
+                        "\n\n                        " +
+                          _vm._s(question.question) +
+                          "\n                        "
                       ),
                       _c(
                         "ol",
@@ -59154,8 +59170,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.userresponses[index],
-                                    expression: "userresponses[index]"
+                                    value: _vm.userResponses[index],
+                                    expression: "userResponses[index]"
                                   }
                                 ],
                                 attrs: { type: "radio", name: index },
@@ -59165,7 +59181,7 @@ var render = function() {
                                       ? true
                                       : choice.answer,
                                   checked: _vm._q(
-                                    _vm.userresponses[index],
+                                    _vm.userResponses[index],
                                     choice.is_correct == true
                                       ? true
                                       : choice.answer
@@ -59177,7 +59193,7 @@ var render = function() {
                                   },
                                   change: function($event) {
                                     return _vm.$set(
-                                      _vm.userresponses,
+                                      _vm.userResponses,
                                       index,
                                       choice.is_correct == true
                                         ? true
@@ -59187,9 +59203,9 @@ var render = function() {
                                 }
                               }),
                               _vm._v(
-                                "\n                    " +
+                                "\n                                " +
                                   _vm._s(choice.answer) +
-                                  "\n                "
+                                  "\n                                \n                            "
                               )
                             ])
                           ])
@@ -59258,29 +59274,22 @@ var render = function() {
                   ]
                 },
                 [
-                  _c("center", [
-                    _c("p", [
-                      _vm._v("\n                You have got:"),
-                      _c("br"),
-                      _vm._v(
-                        _vm._s(_vm.score()) +
-                          "/" +
-                          _vm._s(_vm.questions.length) +
-                          "\n                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { href: "/home" }
-                      },
-                      [_vm._v("Back to Home")]
-                    )
-                  ])
-                ],
-                1
+                  _c(
+                    "p",
+                    [
+                      _c("center", [
+                        _vm._v(
+                          "\n                            You got:" +
+                            _vm._s(_vm.score()) +
+                            "/" +
+                            _vm._s(_vm.questions.length) +
+                            "\n                        "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ]
               )
             ],
             2

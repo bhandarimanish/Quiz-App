@@ -11,12 +11,12 @@
    >
 
 </quiz-component>
-<script>
+<!-- <script>
 window.oncontextmenu=function()
 {
    console.log("Right Click Disabled");
    return false;
 }
-</script>
+</script> -->
 
 @endsection
