@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edmin</title>
+        <title>Quiz App</title>
         <link type="text/css" href="{{asset('edmin/bootstrap/css/bootstrap.min.css')}}"rel="stylesheet">
         <link type="text/css" href="{{asset('edmin/bootstrap/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
         <link type="text/css" href="{{asset('edmin/css/theme.css')}}" rel="stylesheet">
@@ -13,17 +13,19 @@
             rel='stylesheet'>
             
     </head>
-    <body>
+    <body >
         <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
+            <div class="navbar-inner"  style="background-color: #f9e9b6;
+background-image: linear-gradient(90deg, #f9e9b6 0%, #f5c464 100%);
+">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="{{url('/')}}">Edmin </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="{{url('/')}}">Quiz_App </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav nav-icons">
-                            <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
-                            <li><a href="#"><i class="icon-eye-open"></i></a></li>
-                            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
+                        <li><a href="{{route('quiz.create')}}"><i class="icon-arrow-up"></i>Quiz</a></li>
+                            <li ><a href="{{route('assign.exam')}}"><i class="icon-pencil"></i>Exam</a></li>
+                            <li><a href="{{route('user.index')}}"><i class="icon-user"></i>User</a></li>
                         </ul>
                         <form class="navbar-search pull-left input-append" action="#">
                         <input type="text" class="span3">
@@ -32,25 +34,24 @@
                         </button>
                         </form>
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Item No. 1</a></li>
-                                    <li><a href="#">Don't Click</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Example Header</li>
-                                    <li><a href="#">A Separated link</a></li>
-                                </ul>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-eye-open"></i>  Results</a>
+                             
                             </li>
+                         
                             
-                           
-                            <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{asset('edmin/images/user.png')}}" class="nav-avatar" />
-                                
-                                <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Logout</a></li>
-                                </ul>
+                            <li  class="dropdown"> 
+                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                       <img src="{{asset('a.png')}}" class="nav-avatar" style="float:right">
+                                       
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                              
                             </li>
                         </ul>
                     </div>

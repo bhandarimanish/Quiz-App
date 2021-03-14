@@ -1,4 +1,6 @@
-<div class="wrapper" style="background-image: linear-gradient(to right, #faebc0,#fccbbd,#d0f5b5,#b2ecf7,#fce090);">
+<div class="wrapper" style="background-color: #21D4FD;
+background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+">
             <div class="container">
                 <div class="row">
                     <div class="span3">
