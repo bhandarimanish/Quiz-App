@@ -94,7 +94,7 @@ class ExamController extends Controller
 
      public function result()
      {
-        $quizzes=Quiz::get();
+        $quizzes=Quiz::latest()->first();
         return view('backend.result.index',compact('quizzes'));   
      }
 

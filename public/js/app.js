@@ -1949,7 +1949,7 @@ var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"
 
 moment().format();
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['quizid', 'quizQuestions', 'hasQuizPlayed', 'times'],
+  props: ['quizid', 'quizQuestions', 'hasQuizPlayed', 'time'],
   data: function data() {
     return {
       questions: this.quizQuestions,
@@ -1957,7 +1957,7 @@ moment().format();
       userResponses: Array(this.quizQuestions.length).fill(false),
       currentQuestion: 0,
       currentAnswer: 0,
-      clock: moment(this.times)
+      clock: moment(this.time, 'minutes')
     };
   },
   mounted: function mounted() {
@@ -1969,11 +1969,12 @@ moment().format();
   },
   computed: {
     times: function times() {
-      var minsec = this.clock.format('mm:ss');
+      var minsec = this.clock.format("mm:ss");
 
       if (minsec == '00:00') {
         alert('timeout');
         window.location.reload();
+        window.location.href = "/home";
       }
 
       return minsec;
