@@ -45,6 +45,10 @@
                     <button class="btn btn-success float-right"@click="next();postuserChoice()">Next</button>
                     <button v-if="questionIndex>0" class="btn btn-success "@click="prev()">Prev</button>
                     </div>
+                    
+                    <!-- <div v-show="questionIndex===questions.length-1">
+                    <p style="text-align:center;color:red"><b>Last Question<b></p>
+                    </div>-->
                     <div v-show="questionIndex===questions.length">
                         <p>
                             <center>

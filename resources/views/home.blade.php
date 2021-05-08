@@ -21,10 +21,10 @@
                   <p>
                   @if(!in_array($quiz->id,$wasQuizCompleted))
                       <a href="user/quiz/{{$quiz->id}}" class="btn btn-success">Start Quiz<a>
-                      <span class="float-right badge badge-danger">Not Attempted</span>
+                      <span class="float-right" style="color:red"> Uncompleted</span>
                   @else
                   <b><a href="/result/user/{{auth()->user()->id}}/quiz/{{$quiz->id}}">View Result</a></b>
-                  <span class="float-right badge badge-success">Completed</span>
+                  <span class="float-right" style="color:green">Completed</span>
                   @endif
                   </p>
                 </div>
