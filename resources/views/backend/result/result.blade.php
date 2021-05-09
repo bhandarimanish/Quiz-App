@@ -38,6 +38,8 @@
                                     @endforeach
 								  </tbody>
 								</table>
+								<br>
+								<br>
                                 <table class="table table-dark">
 								  <thead>
 									<tr style="background-color:lightblue">
@@ -54,9 +56,9 @@
 									  <td>{{$res->question->name}}</td>
 									  <td>{{$res->answer->answer}}</td>
                                       @if($res->answer->is_correct)
-									  <td>Correct</td>
+									  <td style="color:green">Correct</td>
                                       @else
-                                      <td>Wrong</td>
+                                      <td style="color:red">Wrong</td>
                                       @endif
 									</tr>
                                     @endforeach
@@ -70,3 +72,11 @@
            			</div>
         		</div> 
 @endsection
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+td { text-align: center; }
+</style>

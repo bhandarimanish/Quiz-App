@@ -59,7 +59,7 @@ class ExamController extends Controller
         $userId=DB::table('quiz_user')->where('user_id',$auth)->pluck('quiz_id')->toArray();
         if(!in_array($quizid,$userId))
         {
-            return redirect()->to('/home')->with('error','You are not assigned this exam');
+            return redirect()->to('/home')->with('error','Exam not assigned yet');
         }
         $quiz=Quiz::find($quizid);
         $time=Quiz::where('id',$quizid)->value('minutes');
@@ -89,12 +89,28 @@ class ExamController extends Controller
      public function viewresult($userid,$quizid)
      {
          $results=Result::where('user_id',$userid)->where('quiz_id',$quizid)->get();
-        return view('frontend.result-detail',compact('results'));
+         $quiz=Quiz::find($quizid);
+         $totalquestions=Question::where('quiz_id',$quizid)->count();
+         $attemptquestions=Result::where('quiz_id',$quizid)->where('user_id',$userid)->count();
+         $quiz=Quiz::where('id',$quizid)->get();
+         $ans=[];
+         foreach($results as $answer){
+             array_push($ans,$answer->answer_id);
+         }
+         $usercorrectedanswer=Answer::whereIn('id',$ans)->where('is_correct',1)->count();
+        $userwronganswer=$totalquestions-$usercorrectedanswer;
+        if($attemptquestions){
+         $percentage = ($usercorrectedanswer/$totalquestions)*100;
+     }else{
+         $percentage=0;
+     }
+          return view('frontend.result-detail',compact('results','totalquestions','attemptquestions',
+       'usercorrectedanswer','userwronganswer','percentage','quiz')); 
      }
 
      public function result()
      {
-        $quizzes=Quiz::latest()->first();
+        $quizzes=Quiz::get();
         return view('backend.result.index',compact('quizzes'));   
      }
 

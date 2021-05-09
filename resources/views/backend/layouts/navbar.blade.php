@@ -34,7 +34,7 @@ background-image: linear-gradient(90deg, #f9e9b6 0%, #f5c464 100%);
                         </button>
                         </form>
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <li class="dropdown"><a href="{{route('result')}}" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="icon-eye-open"></i>  Results</a>
                              
                             </li>

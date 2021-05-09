@@ -59,7 +59,7 @@
 				<label class="control-lable" for="options">Options</label>
 				<div class="controls"> 
 					@for($i=0;$i<4;$i++)
-					<input type="text" name="options[]" class="span7 @error('name') border-red @enderror" placeholder=" options{{$i+1}}">
+					<input type="text" name="options[]" class="span7 @error('name') border-red @enderror" placeholder=" options{{$i+1}}" required>
 
 					<input type="radio" name="correct_answer" value="{{$i}}" required><span>Is correct answer</span>
 					@endfor

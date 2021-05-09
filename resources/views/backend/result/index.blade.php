@@ -44,7 +44,7 @@
                                       </a>
                                       </td>
                                       <td>
-                                       <a href="{{$user->id}}/{{$quiz->id}}" class="btn btn-primary">View Result</a>
+                                       <a href="result/{{$user->id}}/{{$quiz->id}}" class="btn btn-primary">View Result</a>
                                       </td>
 									</tr>
                                     @endforeach

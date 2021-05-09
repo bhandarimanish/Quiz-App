@@ -1,14 +1,16 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8" style="margin-top:100px;">
                 <div class="card">
                    
                     <div class="card-header">Online ExaminAtion
                         <span class="float-right">{{questionIndex}}/{{questions.length}}</span>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: #d3d7f9;
+background-image: linear-gradient(0deg, #d3d7f9 0%, #cdf1f5 100%);
+">
                        <span class="float-right" style="color:red;">{{times}}</span>
                        
 
@@ -58,13 +60,14 @@
                         
 
                     </div>
-
+                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 var moment = require('moment'); // require

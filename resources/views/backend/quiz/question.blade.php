@@ -17,7 +17,7 @@
                             <div class="module-body">
                             	
                                 
-                            <p><h3  class="heading">{{$quiz->name}}</h3></p>
+                            <p><h3  class="heading"><u>{{$quiz->name}}</u></h3></p>
 
 
 
@@ -29,7 +29,7 @@
                                             
                                             
                                             <tr class="read">
-                                                {{$question->name}}
+                                               <h4>{{$question->name}}</h4>
                                                 
                                                 <td class="cell-author hidden-phone hidden-tablet">
                                                     @foreach($question->answers as $answer)
@@ -37,7 +37,7 @@
                                                         {{$answer->answer}}
 
                                                     @if($answer->is_correct)
-                                                    <span class="badge badge-success">correct answer</span>
+                                                    <span class="badge badge-success">correct</span>
                                                     @endif
                                                     </p>
                                                     @endforeach

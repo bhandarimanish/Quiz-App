@@ -1948,6 +1948,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js"); // require
 
 
@@ -59124,183 +59127,194 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Online ExaminAtion\n                    "),
-            _c("span", { staticClass: "float-right" }, [
-              _vm._v(
-                _vm._s(_vm.questionIndex) + "/" + _vm._s(_vm.questions.length)
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "span",
-                { staticClass: "float-right", staticStyle: { color: "red" } },
-                [_vm._v(_vm._s(_vm.times))]
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.questions, function(question, index) {
-                return _c("div", [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: index === _vm.questionIndex,
-                          expression: "index===questionIndex"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n\n                        " +
-                          _vm._s(question.question) +
-                          "\n                        "
-                      ),
-                      _c(
-                        "ol",
-                        _vm._l(question.answers, function(choice) {
-                          return _c("li", [
-                            _c("label", [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.userResponses[index],
-                                    expression: "userResponses[index]"
-                                  }
-                                ],
-                                attrs: { type: "radio", name: index },
-                                domProps: {
-                                  value:
-                                    choice.is_correct == true
-                                      ? true
-                                      : choice.answer,
-                                  checked: _vm._q(
-                                    _vm.userResponses[index],
-                                    choice.is_correct == true
-                                      ? true
-                                      : choice.answer
-                                  )
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.choices(question.id, choice.id)
-                                  },
-                                  change: function($event) {
-                                    return _vm.$set(
-                                      _vm.userResponses,
-                                      index,
+      _c(
+        "div",
+        { staticClass: "col-md-8", staticStyle: { "margin-top": "100px" } },
+        [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Online ExaminAtion\n                        "),
+              _c("span", { staticClass: "float-right" }, [
+                _vm._v(
+                  _vm._s(_vm.questionIndex) + "/" + _vm._s(_vm.questions.length)
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "card-body",
+                staticStyle: {
+                  "background-color": "#d3d7f9",
+                  "background-image":
+                    "linear-gradient(0deg, #d3d7f9 0%, #cdf1f5 100%)"
+                }
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "float-right", staticStyle: { color: "red" } },
+                  [_vm._v(_vm._s(_vm.times))]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.questions, function(question, index) {
+                  return _c("div", [
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: index === _vm.questionIndex,
+                            expression: "index===questionIndex"
+                          }
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          "\n\n                            " +
+                            _vm._s(question.question) +
+                            "\n                            "
+                        ),
+                        _c(
+                          "ol",
+                          _vm._l(question.answers, function(choice) {
+                            return _c("li", [
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.userResponses[index],
+                                      expression: "userResponses[index]"
+                                    }
+                                  ],
+                                  attrs: { type: "radio", name: index },
+                                  domProps: {
+                                    value:
+                                      choice.is_correct == true
+                                        ? true
+                                        : choice.answer,
+                                    checked: _vm._q(
+                                      _vm.userResponses[index],
                                       choice.is_correct == true
                                         ? true
                                         : choice.answer
                                     )
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.choices(question.id, choice.id)
+                                    },
+                                    change: function($event) {
+                                      return _vm.$set(
+                                        _vm.userResponses,
+                                        index,
+                                        choice.is_correct == true
+                                          ? true
+                                          : choice.answer
+                                      )
+                                    }
                                   }
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(choice.answer) +
-                                  "\n                                \n                            "
-                              )
+                                }),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(choice.answer) +
+                                    "\n                                    \n                                "
+                                )
+                              ])
                             ])
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                ])
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.questionIndex != _vm.questions.length,
-                      expression: "questionIndex!=questions.length"
-                    }
-                  ]
-                },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success float-right",
-                      on: {
-                        click: function($event) {
-                          _vm.next()
-                          _vm.postuserChoice()
-                        }
-                      }
-                    },
-                    [_vm._v("Next")]
-                  ),
-                  _vm._v(" "),
-                  _vm.questionIndex > 0
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success ",
-                          on: {
-                            click: function($event) {
-                              return _vm.prev()
-                            }
-                          }
-                        },
-                        [_vm._v("Prev")]
-                      )
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.questionIndex === _vm.questions.length,
-                      expression: "questionIndex===questions.length"
-                    }
-                  ]
-                },
-                [
-                  _c(
-                    "p",
-                    [
-                      _c("center", [
-                        _vm._v(
-                          "\n                            You got:" +
-                            _vm._s(_vm.score()) +
-                            "/" +
-                            _vm._s(_vm.questions.length) +
-                            "\n                        "
+                          }),
+                          0
                         )
-                      ])
-                    ],
-                    1
-                  )
-                ]
-              )
-            ],
-            2
-          )
-        ])
-      ])
+                      ]
+                    )
+                  ])
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.questionIndex != _vm.questions.length,
+                        expression: "questionIndex!=questions.length"
+                      }
+                    ]
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success float-right",
+                        on: {
+                          click: function($event) {
+                            _vm.next()
+                            _vm.postuserChoice()
+                          }
+                        }
+                      },
+                      [_vm._v("Next")]
+                    ),
+                    _vm._v(" "),
+                    _vm.questionIndex > 0
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success ",
+                            on: {
+                              click: function($event) {
+                                return _vm.prev()
+                              }
+                            }
+                          },
+                          [_vm._v("Prev")]
+                        )
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.questionIndex === _vm.questions.length,
+                        expression: "questionIndex===questions.length"
+                      }
+                    ]
+                  },
+                  [
+                    _c(
+                      "p",
+                      [
+                        _c("center", [
+                          _vm._v(
+                            "\n                                You got:" +
+                              _vm._s(_vm.score()) +
+                              "/" +
+                              _vm._s(_vm.questions.length) +
+                              "\n                            "
+                          )
+                        ])
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ],
+              2
+            )
+          ])
+        ]
+      )
     ])
   ])
 }
